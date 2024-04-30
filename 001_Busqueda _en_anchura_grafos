@@ -30,6 +30,7 @@ class Grafo:  # Definimos una clase Grafo
                     cola.append(vecino)  # Agregamos el vecino a la cola
                     visitado.add(vecino)  # Marcamos el vecino como visitado
 
+
 # Ejemplo de uso
 grafo = Grafo()  # Creamos un objeto grafo de la clase Grafo
 grafo.agregar_arista(0, 1)  # Agregamos aristas al grafo
