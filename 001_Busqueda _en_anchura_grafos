@@ -1,0 +1,43 @@
+'''Alejandro Arroyo Herrera
+Parcial 2 --- Inteligencia Artificial
+21310199 ----- 6E1-----'''
+
+from collections import defaultdict, deque  #Importamos defaultdict y deque desde el módulo collections
+
+class Grafo:  # Definimos una clase Grafo
+    def __init__(self):  
+        # Constructor de la clase Grafo
+        self.grafo = defaultdict(list)  
+        # Creamos un diccionario para almacenar las listas de adyacencia de los nodos
+
+    def agregar_arista(self, u, v):
+        # Método para agregar una arista al grafo, conectando los nodos u y v
+        self.grafo[u].append(v)
+
+    def bfs(self, inicio):
+        # Método para realizar la búsqueda en anchura comenzando desde el nodo 'inicio'
+        visitado = set()  # Creamos un conjunto para almacenar los nodos visitados
+        cola = deque([inicio])  # Creamos una cola y agregamos el nodo inicial
+        visitado.add(inicio)  # Marcamos el nodo inicial como visitado
+
+        while cola:  # Mientras la cola no esté vacía
+            nodo_actual = cola.popleft()  # Sacamos el nodo del frente de la cola
+            print(nodo_actual, end=' ')  # Imprimimos el nodo actual
+
+            # Exploramos los vecinos del nodo actual
+            for vecino in self.grafo[nodo_actual]:
+                if vecino not in visitado:
+                    cola.append(vecino)  # Agregamos el vecino a la cola
+                    visitado.add(vecino)  # Marcamos el vecino como visitado
+
+# Ejemplo de uso
+grafo = Grafo()  # Creamos un objeto grafo de la clase Grafo
+grafo.agregar_arista(0, 1)  # Agregamos aristas al grafo
+grafo.agregar_arista(0, 2)
+grafo.agregar_arista(1, 2)
+grafo.agregar_arista(2, 0)
+grafo.agregar_arista(2, 3)
+grafo.agregar_arista(3, 3)
+
+print("Recorrido BFS comenzando desde el vértice 2:")
+grafo.bfs(2)  # Realizamos la búsqueda en anchura comenzando desde el vértice 2
