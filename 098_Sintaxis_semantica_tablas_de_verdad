@@ -2,3 +2,32 @@
 Parcial 2 --- Inteligencia Artificial
 21310199 ----- 6E1-----'''
 
+# Importamos la biblioteca itertools para generar todas las combinaciones posibles de verdadero y falso
+import itertools
+
+# Definimos una función para imprimir la tabla de verdad de un operador binario
+def imprimir_tabla_verdad(operador):
+    print(f"p\tq\t(p {operador} q)")
+    # itertools.product genera todas las combinaciones de verdadero (True) y falso (False)
+    for p, q in itertools.product([True, False], repeat=2):
+        # Evaluamos la expresión lógica dependiendo del operador
+        if operador == 'AND':
+            resultado = p and q
+        elif operador == 'OR':
+            resultado = p or q
+        elif operador == 'IMPLICA':
+            resultado = not p or q
+        elif operador == 'BICONDICIONAL':
+            resultado = p == q
+        # Imprimimos los valores de p, q y el resultado de la operación
+        print(f"{p}\t{q}\t{resultado}")
+
+# Imprimimos la tabla de verdad para el operador AND
+imprimir_tabla_verdad('AND')
+# Imprimimos la tabla de verdad para el operador OR
+imprimir_tabla_verdad('OR')
+# Imprimimos la tabla de verdad para el operador IMPLICA
+imprimir_tabla_verdad('IMPLICA')
+# Imprimimos la tabla de verdad para el operador BICONDICIONAL
+imprimir_tabla_verdad('BICONDICIONAL')
+
